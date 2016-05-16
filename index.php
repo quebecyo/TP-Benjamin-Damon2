@@ -6,8 +6,6 @@
   // prendre tous les users
   require('include/dbpackages.php');
   $page_user = get_user();
-
-
   $page_book = get_book();
 
   define('PSESS_USERNAME', 'username');
@@ -49,12 +47,12 @@
 <!DOCTYPE html>
 <html>
 <?php 
-  require_once('include/head_html.php');
+  require('include/head_html.php');
  ?>
 <body>
   <?php 
-    require_once('include/views/top-page/menu.php');
-    require_once('include/views/aside.php');?>
+    require('include/views/top-page/menu.php');
+    require('include/views/aside.php');?>
   <!-- section 1 -->
   <section id="category1" class="objet roman Aventures">
     <div class="section_header">

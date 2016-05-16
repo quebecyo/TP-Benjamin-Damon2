@@ -14,8 +14,9 @@
   	}
 	
 	return $connexion;
-}
-	// inspired by alexandre pinette teacher
+	}
+
+
 	function read_data($db, $requete){
 	
 

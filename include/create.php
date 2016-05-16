@@ -17,8 +17,9 @@
 	}
 	else{
 
-		INSERT INTO `user`(`id`, `firstname`, `lastname`, `username`, `password`, `email`, `adresse`, `city`, `province`, `postalcode`) VALUES (NULL,$firstname,$lastname,$username,[$pass],[$email],[$adresse],[$ville],[$province],[$postal]);
+		INSERT INTO `user`(`id`, `firstname`, `lastname`, `username`, `password`, `email`, `adresse`, `city`, `province`, `postalcode`) VALUES (NULL,"$firstname","$lastname","$username","$pass","$email","$adresse","$ville","$province","$postal");
 
 		echo "USER has been added!";
+		header ("../index.php")
 	}
  ?>

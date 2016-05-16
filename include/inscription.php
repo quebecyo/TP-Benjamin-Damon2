@@ -1,25 +1,33 @@
 <?php
-var_dump($_POST);
+
+
 $receiving = ('POST' === $_SERVER['REQUEST_METHOD']);
 
+
+////////////////
+// Validation //
+////////////////
+
 //validation du nom
-$nom = "";
-$nom_valide = true;
-if ($receiving && array_key_exists('nom', $_POST)) {
-        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
-        $nom_valide = (1 === preg_match('/\w{2,}/', $nom));
-        if ( ! $nom_valide) {
-            $nom_msg_validation = "**Le nom doit comporter au moins deux lettres";
+$lastname = "";
+$lastname_valide = true;
+if ($receiving && array_key_exists('lastname', $_POST)) {
+        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+        $lastname_valide = (1 === preg_match('/\w{2,}/', $lastname));
+        $lastname = $_POST['lastname'];
+        if ( ! $lastname_valide) {
+            $lastname_msg_validation = "**Le lastname doit comporter au moins deux lettres";
         }
 }
 // validation prenom
-$prenom = "";
-$prenom_valide = true;
-if ($receiving && array_key_exists('prenom', $_POST)) {
-    $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
-    $prenom_valide = (1 === preg_match('/\w{2,}/', $prenom));
-    if ( ! $prenom_valide) {
-        $prenom_msg_validation = "**Le prenom doit comporter au moins deux lettres";
+$firstname = "";
+$firstname_valide = true;
+if ($receiving && array_key_exists('firstname', $_POST)) {
+    $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
+    $firstname_valide = (1 === preg_match('/\w{2,}/', $firstname));
+    $firstname = $_POST['firstname'];
+    if ( ! $firstname_valide) {
+        $firstname_msg_validation = "**Le firstname doit comporter au moins deux lettres";
     }
 }
 // validation email
@@ -32,19 +40,21 @@ if($receiving && array_key_exists('email',$_POST)){
         $email_msg_validation = "**Ceci nest pas un courielle valide.";
     }
 }
-$user = "";
-$user_valide = true;
-if ($receiving && array_key_exists('user', $_POST)) {
-    $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
-    $user_valide = (1 === preg_match('/\w{8,}/', $user));
-    if ( ! $user_valide) {
-        $user_msg_validation = "**Le nom dutilisateur doit comporter au moins huit charactere";
+$username = "";
+$username_valide = true;
+if ($receiving && array_key_exists('username', $_POST)) {
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $username_valide = (1 === preg_match('/\w{4,}/', $username));
+    $username = $_POST['username'];
+    if ( ! $username_valide) {
+        $user_msg_validation = "**Le nom dutilisateur doit comporter au moins quatre characteres";
     }
 }
 $pass = "";
 $pass_valide = true;
 if($receiving && array_key_exists('pass',$_POST)){
     $pass_valide= (1 === preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $_POST['pass']));
+    $pass = $_POST['pass'];
     if (!$pass_valide){
     $pass_msg_validation = '**Le mot de pass ne remplis pas les demandes!';
     }
@@ -57,9 +67,9 @@ if($receiving && array_key_exists('repass',$_POST)){
     $repass_msg_validation = "**Les mots de pass ne sont pas identique";
     }
 }
-$addresse = "";
-if(array_key_exists('addresse',$_POST) && !empty(trim($_POST['addresse']))){
-    $addresse = $_POST['addresse'];
+$adresse = "";
+if(array_key_exists('adresse',$_POST) && !empty(trim($_POST['adresse']))){
+    $adresse = $_POST['adresse'];
 }
 $postal = "";
 if(array_key_exists('postal',$_POST) && !empty(trim($_POST['postal']))){
@@ -73,44 +83,48 @@ $province = "";
 if(array_key_exists("province",$_POST) && !empty(trim($_POST['province']))){
     $province = $_POST["province"];
 }
-?>
-<style>
-    .msgvalidation {
-        color: red;
-    }
-</style>
 
-<div>
+include('dbpackages.php');
+
+if(isset($_POST['soumettre'])){
+    $con = mysqli_connect("localhost", "root", "", "db_tpphp");
+    $queryString = "INSERT INTO user (id,firstname,lastname,username,password,email,adresse,city,province,postalcode) VALUES (NULL,'$firstname','$lastname','$username','$pass','$email','$adresse','$ville','$province','$postal')";
+    $res = $con->query($queryString);
+}
+?>
+<!DOCTYPE html>
+<html>
+<?php 
+  require_once('head_html_inscription.php');
+ ?>
+<body>
+  <?php 
+    require('views/top-page/menu.php');
+ ?>
+<div class="inscription_section">
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <?php if ( ! $user_valide) { echo "<p><span class='msgvalidation'>$user_msg_validation<span></p>"; } ?>
-        <p><label for="user">Pseudo : </label>
-            <input type="text" name="user" id="user" value="<?= $user ?>" />
-        </p>
+        <?php if ( ! $username_valide) { echo "<p><span class='msgvalidation'>$user_msg_validation<span></p>"; } ?>
+        <input type="text" name="username" id="username" value="<?= $username ?>" placeholder="Username" />
+
         <?php if ( ! $pass_valide) { echo "<p><span class='msgvalidation'>$pass_msg_validation<span></p>"; } ?>
         <?php if ( ! $repass_valide) { echo "<p><span class='msgvalidation'>$repass_msg_validation<span></p>"; } ?>
-        <p><label for="pass">Mot de passe : </label>
-            <input type="password" name="pass" id="pass" value="<?= $pass ?>" />
-        </p>
-        <p><label for="repass">Refaire Mot de passe : </label>
-            <input type="password" name="repass" id="repass" value="<?= $repass ?>" />
-        </p>
-        <p>Information personelle :</p>
-        <?php if ( ! $nom_valide) { echo "<p><span class='msgvalidation'>$nom_msg_validation<span></p>"; } ?>
-        <p><label for="nom">Nom : </label>
-        <input type="text" name="nom" id="nom" value="<?= $nom ?>"/>
-        </p>
-        <?php if ( ! $prenom_valide) { echo "<p><span class='msgvalidation'>$prenom_msg_validation<span></p>"; } ?>
-        <p><label for="prenom">Prenom : </label>
-        <input type="text" name="prenom" id="prenom" value="<?= $prenom ?>"/>
-        </p>
+        <input type="password" name="pass" id="pass" value="<?= $pass ?>" placeholder="Enter a password"/>
+
+        <input type="password" name="repass" id="repass" value="<?= $repass ?>" placeholder="password again"/>
+
+        <?php if ( ! $lastname_valide) { echo "<p><span class='msgvalidation'>$lastname_msg_validation<span></p>"; } ?>
+
+        <input type="text" name="lastname" id="lastname" value="<?= $lastname ?>" placeholder="Lastname"/>
+
+        <?php if ( ! $firstname_valide) { echo "<p><span class='msgvalidation'>$firstname_msg_validation<span></p>"; } ?>
+        <input type="text" name="firstname" id="firstname" value="<?= $firstname ?>" placeholder="Firstname"/>
+
         <?php if ( ! $email_valide) { echo "<p><span class='msgvalidation'>$email_msg_validation<span></p>"; } ?>
-        <p><label for="email">Addresse Courielle : </label>
-        <input type="text" name="email" id="email" value="<?= $email ?>"/>
-        </p>
-        <p><label for="addresse">Addresse Civile: </label>
-        <input type="text" name="addresse" id="addresse" value="<?= $addresse ?>" />
-        </p>
-        <p><label for="province">Province : </label>
+
+        <input type="text" name="email" id="email" value="<?= $email ?>" placeholder="Email"/>
+
+        <input type="text" name="adresse" id="adresse" value="<?= $adresse ?>" placeholder="Adress"/>
+
         <select id="province" name="province">
             <option value="nothing" <?= 'nada' == $province ? 'selected="selected"' : "" ?>>Choisir une province</option>
             <option value="ab" <?= 'ab' == $province ? 'selected="selected"' : "" ?>>Alberta</option>
@@ -127,15 +141,17 @@ if(array_key_exists("province",$_POST) && !empty(trim($_POST['province']))){
             <option value="nt"<?= 'nt' == $province ? 'selected="selected"' : "" ?>>Territoires du Nord-Ouest</option>
             <option value="yt"<?= 'yt' == $province ? 'selected="selected"' : "" ?>>Yukon</option>
         </select>
-        </p>
-        <p><label for="postal">Code Postal : </label>
-        <input type="text" name="postal" id="postal" value="<?= $postal ?>" />
-        </p>
-        <p><label for="ville">ville : </label>
-        <input type="text" name="ville" id="ville" value="<?= $ville ?>" />
-        </p>
+
+
+        <input type="text" name="postal" id="postal" value="<?= $postal ?>" placeholder="Postal Code"/>
+
+
+        <input type="text" name="ville" id="ville" value="<?= $ville ?>" placeholder="City"/>
+
 
         <input type="submit" name="soumettre" value="Soumettre"/>
 
     </form>
 </div>
+</body>
+</html>
