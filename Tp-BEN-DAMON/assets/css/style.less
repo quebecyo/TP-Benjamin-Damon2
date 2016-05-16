@@ -1,0 +1,200 @@
+// Copyright 2016, Benjamin Gagné
+@import (less) url('initialize.less');
+html, body{
+	width: 100%;
+}
+
+nav {
+
+	#navbar{
+		text-align: center;
+		position: fixed;
+		height: 80px;
+		background-color: #8C1825;
+		width: 100%;
+		overflow: hidden;
+		z-index: 10;
+		text-align: center;
+
+		ul{
+		right:10%;
+		left: 10%;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+
+			li {
+			display: inline;
+			height: inherit;
+
+				a{
+					min-width: 150px;
+					display: table-cell;
+   					vertical-align: middle;
+					height: inherit;
+					font-size: 20px;
+					color: white;
+					padding: 30px 100px;
+					
+
+				}
+				a:hover{
+						background-color: white;
+						color: #69595B;
+				}
+			}
+		}
+	}	
+}
+
+// aside nav bar 
+aside{
+	
+	#wrapper_left{
+		position: fixed;
+		left: 0;
+		top: 80px;
+		height: 100%;
+		width: 15%;
+		background-color: #EBEBEB;
+		z-index: 2;
+		overflow: hidden;
+	}
+
+	#wrapper_right{
+		position: fixed;
+		right: 0;
+		top: 80px;
+		height: 100%;
+		width: 15%;
+		background-color: #EBEBEB;
+		z-index: 2;
+		overflow: hidden;
+
+	#connection{
+		position: fixed;
+		right: 0;
+		top: 0;
+	}
+	}
+	#livre_emprunte_wrapper, #livre_acheter_wrapper{
+		margin-top: 60px;
+		border-top: 3px solid grey;
+	}
+
+	h2{
+		padding: 15px 0 15px 30px;
+		color:black;
+		border-bottom: 3px solid #8C1825;
+	}
+	ul{
+
+		li{
+			padding: 15px 0;
+			width: 100%;
+			border-bottom: 3px solid grey;
+			a{
+				padding: 15px 30px 15px 30px;
+
+			}
+			
+		}
+		// li:hover{
+		// 				background-color: black;
+		// 				color: white;
+		// 	}
+	}
+}
+// content
+.objet{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	text-align: center;
+	.section_header h2{
+		min-width: 100%;
+		position: relative;
+		top:80px;
+		height: 50px;
+		font-size: 30px;
+		background-color: #939696;
+		color:#8C1825;
+		padding-top:15px;
+		font-family:Frijole;
+	}
+
+}
+.roman{
+	.section_content{
+		width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		
+		ul{
+			margin-top: 85px;
+		}
+
+		ul li{
+		// padding-left: 300px;
+		display: inline-block;
+		font-size: 24px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 500px;
+		height: 100%;
+		padding: 30px 0;
+		/* border: 25px solid #939696; */
+		margin-bottom:5px; 
+		background-color: #B5B9BA; 
+		
+
+		p{
+			display: block;	
+			color: #8C1825;
+
+		}
+		img{
+			width: 100px;
+			height: 165px;
+			margin: 10px 0;
+		}
+			.categorie{
+				padding-bottom: 10px;
+			}
+		}
+	}
+	.section_footer{
+		text-align: center;
+		width: 1020px;
+		margin-right: auto;
+		margin-left: auto;
+		h2{
+			color:white;
+			font-size: 25px;
+		}
+	}
+	background-color: #CFCFCF;
+	.Aventures{
+
+	}
+	.Science-fiction{
+
+	}
+	.Biographie{
+
+	}
+	.Policier{
+
+	}
+	.Fantastique{
+
+	}
+}
+.active{
+	background-color: black;
+	color: white;
+}

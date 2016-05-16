@@ -1,0 +1,645 @@
+/*
+* initialize.less
+
+* Copyright 2015-16, Alexandre Pinette
+* http://www.paysagistecz.com/
+* Free to read and inspire
+* date created 21/03/2015
+* date last modified 24/03/2016
+* developped by Alexandre Pinette
+*/
+
+@null: "";
+
+/* COLORS ***********************/
+@paysagistecz-color-bouton:#e6e6e6;
+@paysagistecz-color-black:#363636;
+@paysagistecz-color-white:#F3F3F3;
+@paysagistecz-color-gray:#565656;
+
+@paysagistecz-color-green-alt:#8cb343;
+@paysagistecz-color-green:#22a549;
+
+@paysagistecz-color-red:#de4815;
+
+@main-color:#444;
+
+/* ***********************/
+
+/* FONTS **********************/
+@paysagistecz-font-family: "Open Sans", Verdana, Helvetica, Arial;
+@paysagistecz-font-family-ie8: Arial, sans-serif;
+
+@paysagistecz-font-size-little:12px;
+@paysagistecz-font-size-small:14px;
+@paysagistecz-font-size-normal:16px;
+@paysagistecz-font-size-large:20px;
+@paysagistecz-font-size-extra-large:30px;
+
+
+@font-text: @paysagistecz-font-size-small;
+@font-text-title: 1.25em;
+@font-title: 1.5em;
+
+@line-height-text: 1.25em;
+@line-height-text-title:1.25em;
+@line-height-title:1.5em;
+
+
+.bold {font-weight:bold;} .italic {font-style:italic;}
+.capitalize {text-transform:capitalize;} .uppercase {text-transform: uppercase;} .lowercase {text-transform: lowercase;}
+
+.font-text { /* is for setting the font as a text */
+    font-size:@paysagistecz-font-size-small; line-height:@line-height-text;
+    @media @tablet {font-size:@paysagistecz-font-size-normal;}
+    @media @small-smartphone, @normal-smartphone {font-size:@paysagistecz-font-size-little !important;}
+}
+
+.font-text-title { /* is for setting the font as a title */
+    font-size:@font-text-title; line-height:@line-height-text-title;
+}
+
+.font-title { /* is for setting the font as a title */
+    font-size:@font-title; line-height:@line-height-title;
+}
+
+@font-path: ~'fonts/';
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('@{font-path}fontawesome-webfont.eot');
+  src: url('@{font-path}fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'),
+       url('@{font-path}fontawesome-webfont.woff') format('woff'),
+       url('@{font-path}fontawesome-webfont.ttf') format('truetype'),
+       url('@{font-path}fontawesome-webfont.svg#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* FONT AWESOME */
+@import (inline) url('font-awesome.css');
+
+/* ***********************/
+
+/* IMAGES ***********************/
+
+@img-path: ~'../img/';
+@img-icons: ~'content-ui-icons/';
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ***********************/
+
+/* SIZES & DISPLAY ****************/
+
+@height-header-mobile:90px;
+@height-header-desktop:100px;
+@height-breadcrumb-desktop:43px;
+@height-breadcrumb-mobile:33px;
+@width-nav-mobile:50px;
+@width-nav-desktop:200px;
+
+@height-bar:50px;
+
+/********************************/
+
+/* MEDIA QUERIES ***********************
+================================================== */
+/* iPhone 3-3gs / iPod 1g-3g    width=320;
+   iPhone 4-4s / iPod 4g      width=640;
+   iPhone 5-5c-5s / iPod 5g       width=640; 
+
+   iPad 1-2-Mini          width=768;
+   iPad Air-Mini Retina       width=1536;
+
+   Android Smartphone and tablets
+   common size              width=800;
+                    width=768;
+                    width=480;
+
+   Laptop and Desktop (PC)
+   common size            width>1024;
+
+   Laptop and Desktop (Apple)
+   as same as (PC)
+   except for Retina Screen
+   common size            width>1920;
+*/
+
+/* SMARTPHONES RESOLUTION */
+@smartphone: ~"only screen and (max-width:767px)";
+@smaller-smartphone: ~"only screen and (max-width:344px)";
+@small-smartphone: ~"only screen and (max-width:479px)";
+@normal-smartphone: ~"only screen and (min-width:480px) and (max-width:639px)";
+@large-smartphone: ~"only screen and (min-width:640px) and (max-width:767px)";
+
+/* TABLETS RESOLUTION */
+@small-tablet: ~"only screen and (min-width:768px) and (max-width:991px)";
+@large-tablet: ~"only screen and (min-width:992px) and (max-width:1199px)";
+
+/* DESKTOPS RESOLUTION */
+@small-desktop: ~"only screen and (min-width:1200px) and (max-width:1365px)";
+@normal-desktop: ~"only screen and (min-width:1366px) and (max-width:1599px)";
+@large-desktop: ~"only screen and (min-width:1600px) and (max-width:1920px)";
+
+@all-but-desktop: ~"only screen and (max-width:1199px)";
+
+/* MEDIA QUERIES **MUST USEFUL** RESOLUTION */
+@tablet: ~"only screen and (min-width:768px)";
+@larger-tablet: ~"only screen and (min-width:992px)";
+@desktop: ~"only screen and (min-width:1200px)";
+@larger-screen: ~"only screen and (min-width:1921px)";
+
+/* DISPLAY QUERIES */
+@portrait: ~" and (orientation:portrait)";
+@landscape: ~" and (orientation:landscape)";
+
+/*CSS HACKS MEDIA FOR TARGETING CHROME AND FIREFOX*/
+@chrome: ~"screen and (-webkit-min-device-pixel-ratio:0)"; /* use @media before @chrome */
+@firefox: ~"body:not(:-moz-handler-blocked)"; /* a selector should follow @{firefox} */
+@ie: ~"screen and (-ms-high-contrast: active), (-ms-high-contrast: none)"; /* use media before @ie */
+@ie8: .ie8; /* a selector should folow @{ie8}  and add this to the DOM: <!--[if IE 8 ]> <body class="ie8" lang="en"> <![endif]-->*/
+
+
+.mobile {
+  display:block;
+  @media @larger-tablet { display:none !important; }
+}
+
+.desktop {
+  display:none !important;
+  @media @larger-tablet { display:inline-block !important;}
+}
+
+.hidden {display: none;}
+.shown {display: inline-block !important;}
+
+/**************************************************************
+********************** CSS FUNCTIONS **************************
+************************************************************ */
+
+/* boxsizing() // is to set the paramater of the box-sizing property
+
+   parameters:
+    @argument: (default) -->  border-box
+
+*************************************************************/
+.boxsizing(@argument:border-box) {
+    -moz-box-sizing:@argument;
+    -webkit-box-sizing:@argument;
+    box-sizing:@argument;
+}
+/************************************************************
+*************************************************************/
+
+/* backgroundsize() // is to set the size of the background-size property
+
+   parameters:
+    @size: (default) -->  cover 
+
+*************************************************************/
+.backgroundsize(@size:cover) {
+  background-size: @size;
+}
+
+@png:~'.png';
+@jpg:~'.jpg';
+.backgroundimage(@name, @folder:@null, @file:@jpg) {
+  background-image: url('@{img-path}@{folder}@{name}@{file}');
+  @media @smartphone {background-image: url('@{img-path}@{folder}@{name}@{file}');}
+}
+/************************************************************
+*************************************************************/
+
+/* transition() // is to set the parameters of the css transition effects
+
+   parameters:
+    @applyTo: (default) -->   all
+    @duration: (default) -->  0.2s
+    @ease: (default) -->    ease  
+
+*************************************************************/
+.transition(@applyTo:all, @duration:0.2s, @ease:ease){
+    -webkit-transition: @applyTo @duration @ease;
+    -moz-transition: @applyTo @duration @ease;
+    -o-transition: @applyTo @duration @ease;
+    transition: @applyTo @duration @ease;
+}
+/************************************************************
+*************************************************************/
+
+/* transform() // is to transform html elements such as: rotate, skew, translate, etc.
+
+   parameters:
+    @arguments: ( no default) //** MUST HAVE A WEB SEARCH TO KNOW WHAT TO ASK **TOO MANY OPTIONS
+
+*************************************************************/
+.transform(@arguments) {
+    -webkit-transform: @arguments;
+    -moz-transform: @arguments;
+    -ms-transform: @arguments;
+    -o-transform: @arguments;
+    transform: @arguments;
+}
+/************************************************************
+*************************************************************/
+
+/* transform() // is to transform html elements such as: rotate, skew, translate, etc.
+
+   parameters:
+    @arguments: ( no default) //** MUST HAVE A WEB SEARCH TO KNOW WHAT TO ASK **TOO MANY OPTIONS
+
+*************************************************************/
+.transform-origin(@x, @y) {
+    -webkit-transform-origin: @x @y;
+    -moz-transform-origin: @x @y;
+    -ms-transform-origin: @x @y;
+    -o-transform-origin: @x @y;
+    transform-origin: @x @y;
+}
+/************************************************************
+*************************************************************/
+
+/* boxshadow() // is to add a box shadow to an element
+
+   parameters:
+    @arguments: ( no default) //** EXAMPLE: .boxshadow(0 3px 3px 0 rgba(0,0,0,0.2));  
+
+*************************************************************/
+.boxshadow(@arguments) {
+    box-shadow: @arguments;
+}
+/************************************************************
+*************************************************************/
+
+/* textshadow() // is to add a text shadow to an element
+
+   parameters:
+    @arguments: ( no default) //** EXAMPLE: .textshadow(1px 1px 1px #color);  
+
+*************************************************************/
+.textshadow(@arguments) {
+    text-shadow: @arguments;
+}
+/************************************************************
+*************************************************************/
+
+/* borderradius() // is to cut round border of an object
+
+   parameters:
+    @value: (default) -->   5px
+
+*************************************************************/
+.borderradius(@value:5px) {
+    border-radius: @value;
+}
+/************************************************************
+*************************************************************/
+
+/* scaling() // is to scale an element without changing its proprieties
+
+   parameters:
+    @percent: (default) -->   100
+
+*************************************************************/
+.scaling(@percent:100){
+    .transform(scale(@percent / 100));
+
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin:0 0;
+}
+/************************************************************
+*************************************************************/
+
+/* bg-custom() // is to set parameters of the background of an element
+
+   parameters:
+    @color: (default) -->       @paysagistecz-color-black
+    @padding: (default) -->     0
+    @opacity: (default) -->     0.5 
+
+*************************************************************/
+.bg-custom(@color:@paysagistecz-color-black, @padding:0, @opacity:0.5) {
+    background-color: rgba(red(@color), green(@color), blue(@color), @opacity);
+    padding:@padding;
+}
+/************************************************************
+*************************************************************/
+
+/* setSelectedInputColor() // is to set the focus color of a selected input
+
+   parameters:
+    @color: (default) -->       @paysagistecz-color-blue
+
+*************************************************************/
+.setSelectedInputColor(@color: @paysagistecz-color-blue) {
+    input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 5px @color;
+    border: 1px solid @color;
+    }
+}
+/************************************************************
+*************************************************************/
+
+/* setSelectionColors() // is to set the selection color for the whole page
+
+   parameters:
+    @color: (default) -->       @paysagistecz-color-white
+    @bg-color: (default) -->    @paysagistecz-color-black
+
+*************************************************************/
+.setSelectionColors(@color:@paysagistecz-color-white, @bg-color:@paysagistecz-color-black) {
+    ::-moz-selection { color:@color; background:@bg-color; text-shadow:none; }
+    ::selection { color:@color; background:@bg-color; text-shadow:none; }
+}
+
+/* gradientColor() // is to make a gradient out of of two colors and set it as a background-color
+
+   parameters:
+    @from: (default) -->      no default;
+    @to: (default) -->          no default;
+
+*************************************************************/
+.gradientColor(@from, @to, @frompercent:0, @topercent:100%) {
+  background: @from;
+  background: -moz-linear-gradient(top, @from @frompercent, @to @topercent);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(@frompercent,@from), color-stop(@topercent,@to));
+  background: -webkit-linear-gradient(top, @from @frompercent, @to @topercent);
+  background: -o-linear-gradient(top, @from @frompercent, @to @topercent);
+  background: -ms-linear-gradient(top, @from @frompercent, @to @topercent);
+  background: linear-gradient(to bottom, @from @frompercent, @to @topercent);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@from, endColorstr=@to,GradientType=0 );
+}
+/************************************************************
+*************************************************************/
+
+/**************************************************************
+************************** GRID *****************************
+************************************************************ */
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  height:inherit;
+  line-height:inherit;
+  
+  &.only-desktop {
+    @media @all-but-desktop {
+        padding:0!important;
+        width:100%;
+    }
+  }
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col {
+    position:relative;
+    min-height:1px;
+    float:left;
+    &.padded { padding-right:15px; padding-left:15px;}
+}
+.no-padding { padding:0 !important;}
+
+.clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after {
+ display: table;
+ content: " ";
+}
+
+.clearfix:after, .container:after, .container-fluid:after, .row:after {
+ clear: both;
+}
+
+/* COLUMN FOR > MOBILES */
+.col-xs-12 {width: 100%;} .col-xs-11 {width: 91.66666667%;} .col-xs-10 {width: 83.33333333%;} .col-xs-80p {width: 80%;} .col-xs-9 {width: 75%;} .col-xs-8 {width: 66.66666667%;} .col-xs-60p {width: 60%;} .col-xs-7 {width: 58.33333333%;} .col-xs-6 {width: 50%;} .col-xs-5 {width: 41.66666667%;} .col-xs-40p {width:40%;} .col-xs-4 {width: 33.33333333%;} .col-xs-3 {width: 25%;} .col-xs-20p {width: 20%;} .col-xs-2 {width: 16.66666667%;} .col-xs-1 {width: 8.33333333%;} .col-xs-05 {width: 5%;} .col-xs-025 {width: 2.5%;} .col-xs-0 {width:0;}
+
+@media @tablet { /* COLUMN FOR > TABLETS */
+    .container {width: 750px; padding-right:5px; padding-left:5px;}
+    .col-sm-12 {width: 100%;} .col-sm-11 {width: 91.66666667%;} .col-sm-10 {width: 83.33333333%;} .col-sm-80p {width: 80%;} .col-sm-9 {width: 75%;} .col-sm-8 {width: 66.66666667%;} .col-sm-60p {width: 60%;} .col-sm-7 {width: 58.33333333%;} .col-sm-6 {width: 50%;} .col-sm-5 {width: 41.66666667%;} .col-sm-40p {width:40%;} .col-sm-4 {width: 33.33333333%;} .col-sm-3 {width: 25%;} .col-sm-20p {width: 20%;} .col-sm-2 {width: 16.66666667%;} .col-sm-1 {width: 8.33333333%;} .col-sm-05 {width: 5%;} .col-sm-025 {width: 2.5%;} .col-sm-0 {width:0;}
+}
+@media @larger-tablet { /* COLUMN FOR > LARGER TABLETS */
+    .container {width: 970px;}
+    .col-md-12 {width: 100%;} .col-md-11 {width: 91.66666667%;} .col-md-10 {width: 83.33333333%;} .col-md-80p {width: 80%;} .col-md-9 {width: 75%;} .col-md-8 {width: 66.66666667%;} .col-md-60p {width: 60%;} .col-md-7 {width: 58.33333333%;} .col-md-6 {width: 50%;} .col-md-5 {width: 41.66666667%;} .col-md-40p {width:40%;} .col-md-4 {width: 33.33333333%;} .col-md-3 {width: 25%;} .col-md-20p {width: 20%;} .col-md-2 {width: 16.66666667%;} .col-md-1 {width: 8.33333333%;} .col-md-05 {width: 5%;} .col-md-025 {width: 2.5%;} .col-md-0 {width:0;}
+
+}
+@media @desktop { /* COLUMN FOR > DESKTOPS */
+    .container {width: 1170px;}
+    .col-lg-12 {width: 100%;} .col-lg-11 {width: 91.66666667%;} .col-lg-10 {width: 83.33333333%;} .col-lg-80p {width: 80%;} .col-lg-9 {width: 75%;} .col-lg-8 {width: 66.66666667%;} .col-lg-60p {width: 60%;} .col-lg-7 {width: 58.33333333%;} .col-lg-6 {width: 50%;} .col-lg-5 {width: 41.66666667%;} .col-lg-40p {width:40%;} .col-lg-4 {width: 33.33333333%;} .col-lg-3 {width: 25%;} .col-lg-20p {width: 20%;} .col-lg-2 {width: 16.66666667%;} .col-lg-1 {width: 8.33333333%;} .col-lg-05 {width: 5%;} .col-lg-025 {width: 2.5%;} .col-lg-0 {width:0;}
+}
+
+@{ie8} {
+    .col-sm-12 {width: 100%;} .col-sm-11 {width: 91.66666667%;} .col-sm-10 {width: 83.33333333%;} .col-sm-80p {width: 80%;} .col-sm-9 {width: 75%;} .col-sm-8 {width: 66.66666667%;} .col-sm-60p {width: 60%;} .col-sm-7 {width: 58.33333333%;} .col-sm-6 {width: 50%;} .col-sm-5 {width: 41.66666667%;} .col-sm-40p {width:40%;} .col-sm-4 {width: 33.33333333%;} .col-sm-3 {width: 25%;} .col-sm-20p {width: 20%;} .col-sm-2 {width: 16.66666667%;} .col-sm-1 {width: 8.33333333%;} .col-xs-05 {width: 5%;} .col-xs-025 {width: 2.5%;} .col-sm-0 {width:0;}
+    .col-md-12 {width: 100%;} .col-md-11 {width: 91.66666667%;} .col-md-10 {width: 83.33333333%;} .col-md-80p {width: 80%;} .col-md-9 {width: 75%;} .col-md-8 {width: 66.66666667%;} .col-md-60p {width: 60%;} .col-md-7 {width: 58.33333333%;} .col-md-6 {width: 50%;} .col-md-5 {width: 41.66666667%;} .col-md-40p {width:40%;} .col-md-4 {width: 33.33333333%;} .col-md-3 {width: 25%;} .col-md-20p {width: 20%;} .col-md-2 {width: 16.66666667%;} .col-md-1 {width: 8.33333333%;} .col-md-05 {width: 5%;} .col-md-025 {width: 2.5%;} .col-md-0 {width:0;}
+    .col-lg-12 {width: 100%;} .col-lg-11 {width: 91.66666667%;} .col-lg-10 {width: 83.33333333%;} .col-lg-80p {width: 80%;} .col-lg-9 {width: 75%;} .col-lg-8 {width: 66.66666667%;} .col-lg-60p {width: 60%;} .col-lg-7 {width: 58.33333333%;} .col-lg-6 {width: 50%;} .col-lg-5 {width: 41.66666667%;} .col-lg-40p {width:40%;} .col-lg-4 {width: 33.33333333%;} .col-lg-3 {width: 25%;} .col-lg-20p {width: 20%;} .col-lg-2 {width: 16.66666667%;} .col-lg-1 {width: 8.33333333%;} .col-lg-05 {width: 5%;} .col-lg-025 {width: 2.5%;} .col-lg-0 {width:0;}
+}
+
+/************************************************************
+*************************************************************/
+
+/**************************************************************
+************************** SHAPES *****************************
+************************************************************ */
+
+@shape-color:@paysagistecz-color-black;
+.shape { display:inline-block; margin:15px; background-color:@shape-color;}
+.shape.no-margin {margin:0 !important;}
+
+.shape.line {display:block; width:100%; min-height:1px; margin:0!important;}
+.shape.rectangle {min-height:45px; min-width:100px; &.round {.borderradius();}}
+.shape.square { .shape; min-width:45px; min-height:45px; &.round {.borderradius();}}
+.shape.circle {min-height:45px; min-width:45px; .borderradius(50%);}
+.shape.triangle {
+    width:0; height:0; background-color:transparent;
+    &:not(.up):not(.down):not(.left):not(.right), 
+    &.up {border-left: 45px solid transparent; border-right:45px solid transparent; border-bottom:45px solid @shape-color;}
+    &.down {border-left: 45px solid transparent; border-right:45px solid transparent; border-top:45px solid @shape-color;}
+    &.left {border-top: 45px solid transparent; border-bottom:45px solid transparent; border-right:45px solid @shape-color;}
+    &.right {border-top: 45px solid transparent; border-bottom:45px solid transparent; border-left:45px solid @shape-color;}
+}
+
+.shape.invisible {background-color:inherit;}
+
+/************************************************************
+*************************************************************/
+
+/**************************************************************
+************************** OBJECTS ****************************
+************************************************************ */
+.object {
+
+  top:0; left:0;
+  width:100%;
+  margin:auto;
+
+  &.forimg {
+    position:fixed;
+    height:100%;
+    background-repeat:no-repeat;
+    background-size:contain;
+  }
+
+  &.forcontent {
+    position:absolute;
+  }
+
+  &.center {
+    left:0;
+    right:0;
+  }
+
+  &.middle {
+    top:0;
+    bottom:0;
+  }
+}
+
+/************************************************************
+*************************************************************/
+
+/**************************************************************
+************************** INITIALIZER ************************
+************************************************************ */
+
+*:before,
+*:after {
+    .boxsizing;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1em;
+    height:100%;
+    .setSelectionColors; /*SET A COLOR AND A BG-COLOR WHEN SELECTED TEXT*/
+}
+
+body {
+    height:100%;
+    &@{ie8} {font-family:@paysagistecz-font-family-ie8;}
+    font-family: @paysagistecz-font-family;
+    .font-text;
+    color: @paysagistecz-color-black;
+    background-color: @paysagistecz-color-white;
+    -webkit-font-smoothing: antialiased;
+}
+
+html, body, div, span, header, footer, h1, h2, h3, h4, h5, h6, p, i, section, nav {.boxsizing();}
+a {.boxsizing(content-box);}
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+    background: transparent;
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+article, aside, figure, footer, header, hgroup, nav, section {display: block; position:relative;} //HTML5 selectors
+img, object, embed {max-width: 100%;}
+blockquote, q {quotes: none;} blockquote:before, blockquote:after, q:before, q:after {content: none;} abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+sub, sup {font-size: 75%; line-height: 0; position: relative;} sup {top: -.5em;} sub {bottom: -.25em;}
+strong, th {font-weight: 700;}
+input, select, img {vertical-align: middle;}
+th {vertical-align: bottom;} td, td img {vertical-align: top;}
+pre {white-space: pre-line; .breakword;} pre.error-message, pre.metadata {font-family: @paysagistecz-font-family;}
+small {font-size: .85em; line-height: .85em;}
+input[type="checkbox"] {vertical-align: middle;}
+button, input, select, textarea {margin: 0;}
+.clearfix:before, .clearfix:after {content: "\0020"; display: block; height: 0; overflow: hidden;} .clearfix:after {clear: both;} .clearfix {-ms-zoom: 1; zoom: 1;}
+ins {background-color: #fcd700;color: #000;text-decoration: none;} mark {background-color: #fcd700;color: #000;font-style: italic;font-weight: 700;}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    display: block;
+    height: 1px;
+    margin: 1em 0;
+    padding: 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:focus {
+    text-decoration: none;
+    .transition(all, 0.3s);
+    -webkit-tap-highlight-color: none;
+    color:inherit;
+}
+
+button:active {
+  outline:none;
+  border:none;
+}
+
+ul {
+    list-style-type: none; margin:0; padding:0;
+    &.list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin:0;
+    > li {
+        display: inline-block;
+        padding-right: 5px;
+        padding-left: 5px;
+        height:inherit;
+        line-height:inherit;
+        box-sizing:border-box;
+        }
+    }
+}
+
+a:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
+/************************************************************
+*************************************************************/
+
+/**************************************************************
+**************************** FIXES ****************************
+************************************************************ */
+
+.fixforpositionfixed {
+    @media @chrome {
+     .transform(translate3d(0, 0, 0));
+    }
+    @media @ie {
+        .transform(translateZ(0));
+    }
+}
+
+.breakword {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.clickable, label, input[type=button], input[type=submit], button {
+    cursor: pointer;
+}
+
+/************************************************************
+************************************************************/
