@@ -61,10 +61,10 @@
     <div class="section_content">
     	<ul>
       <?php for ($i = 0; $i < 4 ;$i++) { ?>
-              <li><a href="detail.php">show more
+              <li>
                     <p class="nom"><?= $page_book[$i][1]; ?></p>
                     <img src="<?= $page_book[$i][6]; ?>" alt=""/>
-                    <p class="prix"><?= $page_book[$i][5]; ?></p></a>
+                    <p class="prix"><?= $page_book[$i][5]; ?></p>
               </li>
           <?php } ?>
 	    </ul>
