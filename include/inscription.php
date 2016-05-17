@@ -86,10 +86,16 @@ if(array_key_exists("province",$_POST) && !empty(trim($_POST['province']))){
 
 include('dbpackages.php');
 
+$msg_erreur = "";
 if(isset($_POST['soumettre'])){
-    $con = mysqli_connect("localhost", "root", "", "db_tpphp");
-    $queryString = "INSERT INTO user (id,firstname,lastname,username,password,email,adresse,city,province,postalcode) VALUES (NULL,'$firstname','$lastname','$username','$pass','$email','$adresse','$ville','$province','$postal')";
-    $res = $con->query($queryString);
+    if($lastname && $firstname_valide && $email_valide && $pass_valide && $repass_valide && $username_valide) {
+        $con = mysqli_connect("localhost", "root", "", "db_tpphp");
+        $queryString = "INSERT INTO user (id,firstname,lastname,username,password,email,adresse,city,province,postalcode) VALUES (NULL,'$firstname','$lastname','$username','$pass','$email','$adresse','$ville','$province','$postal')";
+        $res = $con->query($queryString);
+        header("location:http://livre-awesome.projetisi.com/");
+    } else {
+        $msg_erreur = "Veuiller complete les cases requises";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -102,6 +108,7 @@ if(isset($_POST['soumettre'])){
     require('views/top-page/menu.php');
  ?>
 <div class="inscription_section">
+    <?php echo "<p><span class='msgvalidation'>$msg_erreur<span></p></br> "; ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <?php if ( ! $username_valide) { echo "<p><span class='msgvalidation'>$user_msg_validation<span></p>"; } ?>
         <input type="text" name="username" id="username" value="<?= $username ?>" placeholder="Username" />
