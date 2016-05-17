@@ -4,7 +4,6 @@
 	$table_book = "book";
 
 
-
 	function creation_connexion($db){
 	// on besoin d'une connexion 
 	$connexion = mysqli_connect("localhost", "root", "", $db);
@@ -21,6 +20,10 @@
 	
 
 	$connexion = creation_connexion($db);
+	// try{
+	// 	$result = 
+
+	// }
 
 
 	// creation d'un tampon de donnees'
@@ -29,7 +32,7 @@
 	if ($result = mysqli_query($connexion, $requete)) {
 
 		if(isset($result)){
-			
+			// var_dump($result);
 			// on va boucler sur tous les résultats de la req
 			while($ligne = mysqli_fetch_row($result)){
 				
@@ -40,8 +43,7 @@
 				 	$entite[$cle] = $valeur;
 				 }
 
-				 
-				 $donnees[] = $entite;
+					 $donnees[] = $entite;
 			}	
 		}
 		mysqli_free_result($result);
@@ -51,41 +53,51 @@
 
 	return($donnees);
 }
+		 
+	
+	// function get_user(){
+	
+	// 	global $table_user;
+	// 	global $db;
+	// 	$query_get_user = "SELECT * FROM ". $table_user;	
+	// 	// lecture de tous les usagers de la db
+	// 	$user = read_data($db, $query_get_user);
+	// 	return $user;
+	
+	// }
 
-	function get_user(){
-	
-		global $table_user;
-		global $db;
-		$query_get_user = "SELECT * FROM ". $table_user;	
-		// lecture de tous les usagers de la db
-		$user = read_data($db, $query_get_user);
-		return $user;
-	
+
+	function passwd_check($password_user, $password_server) {
+	    $bool = false;
+	    if ($password_user == $password_server) {
+	    	$bool = true;
+	    }
+	    return $bool;
 	}
 	function user_authenticate($username, $password) {
 			global $table_user;
 			global $db;
-			$query_get_user = "SELECT * FROM ". $table_user;	
-			// lecture de tous les usagers de la db
-			$user = read_data($db, $query_get_user);
-			return $user;
 
-		    // $username = $mysqli->real_escape_string($username);
-		    // $password = $mysqli->real_escape_string($password);
+
 		    $queryStr = "SELECT * FROM " . $table_user . " WHERE username='$username'";
-		//    var_dump($queryStr);
-		    $res = $table_user->query($queryStr);
-		    $resultat = false;
-		    if ($res && ($res->num_rows > 0)) {
-		        $user_data = $res->fetch_assoc();
-		//        var_dump($user_data);
-		        if (passwd_check($password, $user_data['password_hash'])) {
-		            // Retirer le hash des valeurs retournées
-		            unset($user_data['password_hash']);
-		            $resultat = $user_data;
+		    $res = read_data($db, $queryStr);
+		    // var_dump($res);
+		    if (!empty($res)) {
+		    	if (passwd_check($password, $res[0][4])) {
+	            // Retirer le hash des valeurs retournées
+	            unset($res[0][4]);
+
+				return true;
+		        }
+		        else{
+		        	return false;
 		        }
 		    }
-		    return $resultat;
+		    else{
+		    	// var_dump('aucun usager');
+		    }
+	        
+		    
 		}
 	function get_book(){
 	

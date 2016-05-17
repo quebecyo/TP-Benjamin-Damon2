@@ -5,10 +5,10 @@
   session_start(); 
   // prendre tous les users
   require('include/dbpackages.php');
-  $page_user = get_user();
   $page_book = get_book();
 
   define('PSESS_USERNAME', 'username');
+  define('PSESS_PASSWORD', 'password');
   $login_message = ''; // Message à afficher en cas de bonne ou de mauvaise connexion
   $user_is_loggedIn = false; // Indique que l'utilisateur est connecté ou ne l'est pas
   $username = null; // Valeur du username
@@ -42,7 +42,7 @@
           $username = $_SESSION[PSESS_USERNAME];
           $login_message = "Bonjour $username";
       }
-}
+  }
  ?>
 <!DOCTYPE html>
 <html>

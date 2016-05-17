@@ -92,7 +92,8 @@ if(isset($_POST['soumettre'])){
         $con = mysqli_connect("localhost", "root", "", "db_tpphp");
         $queryString = "INSERT INTO user (id,firstname,lastname,username,password,email,adresse,city,province,postalcode) VALUES (NULL,'$firstname','$lastname','$username','$pass','$email','$adresse','$ville','$province','$postal')";
         $res = $con->query($queryString);
-        header("location:http://livre-awesome.projetisi.com/");
+        // header("location:http://livre-awesome.projetisi.com/");
+        header('location: ../index.php');
     } else {
         $msg_erreur = "Veuiller complete les cases requises";
     }
