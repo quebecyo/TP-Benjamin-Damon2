@@ -3,9 +3,12 @@ header("Content-type: text/javascript; charset=utf-8");
 header("Access-Control-Allow-Origin: *");
 //response.__setitem__("Content-type", "application/json")
 //exit('icilolo');
+
+require_once('../defines.php');
 require('dbpackages.php');
 require_once(ROOT_DIR . 'utils/panier.php');
 //$panier=array(); // Ne décommenter (1 exécution) que pour VIDER le panier
+
 // Les paramètres de la queryString
 define('PGET_OPERATION', 'operation');
 define('PGET_ID_ARTICLE', 'id');
@@ -16,28 +19,38 @@ define('PGET_OP_VIDER_TOUT', 'op_vider_tout'); // Retirer complètement tous les
 define('PGET_OP_STATUS', 'op_status'); // Demander le contenu du panier
 // On part de la présence d'une action dans la queryString
 if (array_key_exists(PGET_OPERATION, $_GET)) { // Il y a un paramètre 'action' dans la queryString
-switch ($_GET[PGET_OPERATION]) {
-    case PGET_OP_STATUS :
-    break;
-    case PGET_OP_MAJ :
-    if (array_key_exists(PGET_QTY_ARTICLE, $_GET) && array_key_exists(PGET_ID_ARTICLE, $_GET)) {
-        $id_article = $_GET[PGET_ID_ARTICLE];
+    switch ($_GET[PGET_OPERATION]) {
+        case PGET_OP_STATUS :
+            break;
+        case PGET_OP_MAJ :
+            if (array_key_exists(PGET_QTY_ARTICLE, $_GET) && array_key_exists(PGET_ID_ARTICLE, $_GET)) {
+                $id_article = $_GET[PGET_ID_ARTICLE];
                 // Est-ce qu'il existe un article ayant cet id
-        if ( ! is_null($article = get_book($id_article)) && in_array($_GET[PGET_QTY_ARTICLE], range(0,10))) {
-            if (0 == $_GET[PGET_QTY_ARTICLE]) {
-                unset($panier[$id_article]);
-            } else {
+                if ( ! is_null($article = get_article($id_article)) && in_array($_GET[PGET_QTY_ARTICLE], range(0,10))) {
+                    if (0 == $_GET[PGET_QTY_ARTICLE]) {
+                        unset($panier[$id_article]);
+                    } else {
                         // Si l'article n'est pas déj`dans le panier, on l'y ajoute
-                if ( ! array_key_exists($id_article, $panier)) {
-                    $panier[$id_article][PSESS_CARD_NAME] = get_right_encoding($article['name']);
-                    $panier[$id_article][PSESS_CARD_PRICE] = $article['price'];
-                }
+                        if ( ! array_key_exists($id_article, $panier)) {
+                            $panier[$id_article][PSESS_CARD_NAME] = get_right_encoding($article['name']);
+                            $panier[$id_article][PSESS_CARD_PRICE] = $article['price'];
+                        }
                         // Maj quantité
-                $panier[$id_article][PSESS_CARD_QTY] = $_GET[PGET_QTY_ARTICLE];
+                        $panier[$id_article][PSESS_CARD_QTY] = $_GET[PGET_QTY_ARTICLE];
+                    }
+                }
             }
-        }
+            break;
+        case PGET_OP_RETIRER :
+            if (array_key_exists(PGET_ID_ARTICLE, $_GET) && array_key_exists($id_article = $_GET[PGET_ID_ARTICLE], $panier)) {
+                unset($panier[$id_article]);
+            }
+            break;
+        case PGET_OP_VIDER_TOUT :
+            break;
+        default:
+            // Afficher erreur sur valeur action
     }
-    break;
-    case PGET_OP_RETIRER :
 }
-}
+// Sortie résultat
+echo json_encode($panier);

@@ -5,6 +5,8 @@
   session_start(); 
   // prendre tous les users
   require('include/dbpackages.php');
+  require_once('defines.php');
+  require_once('include/utils/panier.php');
   $page_book = get_book();
 
   define('PSESS_USERNAME', 'username');

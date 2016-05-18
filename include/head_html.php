@@ -15,6 +15,7 @@
 
   <script src="assets/js/jquery-1.11.3.js"></script>
   <!-- <script src="assets/js/jquery.mousewheel.min.js"></script> -->
+  <script src="assets/js/panier.js"></script> 
   <script src="assets/js/global.js"></script> 
 
 </head>

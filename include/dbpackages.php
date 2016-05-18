@@ -3,6 +3,12 @@
 	$table_user = "user";
 	$table_book = "book";
 
+	// Constantes rassemblant les infos de connexion et de schéma de la DB
+	define('CONN_HOST', 'localhost');
+	define('CONN_USER', 'root');
+	define('CONN_PWD', '');
+
+
 
 	function creation_connexion($db){
 	// on besoin d'une connexion 
@@ -110,5 +116,25 @@
 		
 		return $book;
 	
+	}
+	$mysqli = new mysqli(CONN_HOST, CONN_USER, CONN_PWD, $db);
+	function get_article_list($cat_id=false) {
+    global $mysqli;
+	// Sélectionner tous les articles (toutes les colonnes)
+	    $queryStr = 'SELECT * FROM article';
+	    // Si la catégorie est précisée, on ajoute une clause WHERE dans la requête
+	    if (false !== $cat_id) {
+	        $queryStr .= " WHERE `category_id` = " . $mysqli->real_escape_string($cat_id);
+	    }
+	// Execution de la requête (un select)
+	    $res = $mysqli->query($queryStr);
+	// Récupération des données
+	    $resultat = array();
+	    if ($res && ($res->num_rows > 0)) {
+	        while ($article = $res->fetch_assoc()) {
+	            $resultat[$article['id']] = $article;
+	        };
+	    };
+	    return $resultat;
 	}
 ?>
