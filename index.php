@@ -64,7 +64,7 @@
               <li>
                     <p class="nom"><?= $page_book[$i][1]; ?></p>
                     <img src="<?= $page_book[$i][6]; ?>" alt=""/>
-                    <p class="prix"><?= $page_book[$i][5]; ?></p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
 	    </ul>
@@ -86,7 +86,7 @@
               <li>
                     <p class="nom"><?= $page_book[$i][1]; ?></p>
                     <img src="<?= $page_book[$i][6]; ?>" alt=""/>
-                    <p class="prix"><?= $page_book[$i][5]; ?></p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
 	    </ul>
@@ -108,7 +108,7 @@
               <li>
                     <p class="nom"><?= $page_book[$i][1]; ?></p>
                     <img src="<?= $page_book[$i][6]; ?>" alt=""/>
-                    <p class="prix"><?= $page_book[$i][5]; ?></p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
 	    </ul>
@@ -130,7 +130,7 @@
               <li>
                     <p class="nom"><?= $page_book[$i][1]; ?></p>
                     <img src="<?= $page_book[$i][6]; ?>" alt=""/>
-                    <p class="prix"><?= $page_book[$i][5]; ?></p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
 	    </ul>
@@ -152,7 +152,7 @@
               <li>
                     <p class="nom"><?= utf8_encode($page_book[$i][1]); ?></p>
                     <img src="<?= $page_book[$i][6]; ?>" alt=""/>
-                    <p class="prix"><?= $page_book[$i][5]; ?></p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
 	    </ul>

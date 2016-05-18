@@ -29,13 +29,6 @@
       <div id="panier_wrapper">
         <h2>Mon Panier:</h2>
       </div>
-
-      <div id="livre_emprunte_wrapper">
-        <h2>Mes livres Empruntés:</h2>
-      </div>
-      <div id="livre_acheter_wrapper">
-        <h2>Mes livres Achetés:</h2>
-      </div>
     </div>
 
     
