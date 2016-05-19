@@ -48,12 +48,13 @@ if (array_key_exists('connect', $_POST)
 <!DOCTYPE html>
 <html>
 <?php
-require('head_html.php');
+require('head_html_inscription.php');
 ?>
 <body>
 <?php
 require('views/top-page/menu.php');
-require('views/aside.php');?>
+require('views/aside.php');
+?>
 <!-- section 1 -->
 <section id="category1" class="objet roman Aventures">
  <div class="section_header">

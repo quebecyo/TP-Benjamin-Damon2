@@ -3,6 +3,7 @@
 $(function(){
     console.log("jQuery branché et DOM chargé !");
 
+
     $('.aside_menu a').click(function(){
     //   $('.aside_menu a').each(function(){
     //     $(this).removeClass("active");
