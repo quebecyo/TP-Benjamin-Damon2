@@ -8,7 +8,6 @@
   require_once('defines.php');
   require_once('include/utils/panier.php');
   $page_book = get_book();
-
   define('PSESS_USERNAME', 'username');
   define('PSESS_PASSWORD', 'password');
   $login_message = ''; // Message à afficher en cas de bonne ou de mauvaise connexion
@@ -64,8 +63,8 @@
     	<ul>
       <?php for ($i = 0; $i < 4 ;$i++) { ?>
               <li>
-                    <p class="nom"><?= $page_book[$i][1]; ?></p>
-                    <img src="<?= $page_book[$i][6]; ?>" alt=""/>
+                    <p class="nom"><a href="include/detail.php?id=<?= $i ?>"> <?= $page_book[$i][1]; ?></a></p>
+                    <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
                     <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
@@ -86,8 +85,8 @@
     	<ul>
 	     <?php for ($i = 4; $i < 8 ;$i++) { ?>
               <li>
-                    <p class="nom"><?= $page_book[$i][1]; ?></p>
-                    <img src="<?= $page_book[$i][6]; ?>" alt=""/>
+                  <p class="nom"><a href="include/detail.php?id=<?= $i ?>"> <?= $page_book[$i][1]; ?></a></p>
+                  <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
                     <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
@@ -108,8 +107,8 @@
     	<ul>
 	     <?php for ($i = 8; $i < 12 ;$i++) { ?>
               <li>
-                    <p class="nom"><?= $page_book[$i][1]; ?></p>
-                    <img src="<?= $page_book[$i][6]; ?>" alt=""/>
+                  <p class="nom"><a href="include/detail.php?id=<?= $i ?>"> <?= $page_book[$i][1]; ?></a></p>
+                  <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
                     <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
@@ -130,8 +129,8 @@
     	<ul>
 	     <?php for ($i = 12; $i < 16 ;$i++) { ?>
               <li>
-                    <p class="nom"><?= $page_book[$i][1]; ?></p>
-                    <img src="<?= $page_book[$i][6]; ?>" alt=""/>
+                    <p class="nom"><a href="include/detail.php?id=<?= $i ?>"> <?= $page_book[$i][1]; ?></a></p>
+                  <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
                     <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
@@ -152,8 +151,8 @@
     	<ul>
 	     <?php for ($i =16; $i < 20 ;$i++) { ?>
               <li>
-                    <p class="nom"><?= utf8_encode($page_book[$i][1]); ?></p>
-                    <img src="<?= $page_book[$i][6]; ?>" alt=""/>
+                    <p class="nom"><a href="include/detail.php?id=<?= $i ?>"><?= utf8_encode($page_book[$i][1]); ?></a></p>
+                  <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
                     <p class="prix"><?= $page_book[$i][5]; ?>$</p>
               </li>
           <?php } ?>
