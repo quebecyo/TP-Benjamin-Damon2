@@ -65,7 +65,7 @@
               <li>
                     <p class="nom"><a href="include/detail.php?id=<?= $i ?>"> <?= $page_book[$i][1]; ?></a></p>
                     <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
-                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>.99$</p>
               </li>
           <?php } ?>
 	    </ul>
@@ -87,7 +87,7 @@
               <li>
                   <p class="nom"><a href="include/detail.php?id=<?= $i ?>"> <?= $page_book[$i][1]; ?></a></p>
                   <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
-                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>.99$</p>
               </li>
           <?php } ?>
 	    </ul>
@@ -109,7 +109,7 @@
               <li>
                   <p class="nom"><a href="include/detail.php?id=<?= $i ?>"> <?= $page_book[$i][1]; ?></a></p>
                   <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
-                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>.99$</p>
               </li>
           <?php } ?>
 	    </ul>
@@ -131,7 +131,7 @@
               <li>
                     <p class="nom"><a href="include/detail.php?id=<?= $i ?>"> <?= $page_book[$i][1]; ?></a></p>
                   <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
-                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>.99$</p>
               </li>
           <?php } ?>
 	    </ul>
@@ -153,7 +153,7 @@
               <li>
                     <p class="nom"><a href="include/detail.php?id=<?= $i ?>"><?= utf8_encode($page_book[$i][1]); ?></a></p>
                   <a href="include/detail.php?id=<?= $i ?>"><img src="<?= $page_book[$i][6]; ?>" alt=""/></a>
-                    <p class="prix"><?= $page_book[$i][5]; ?>$</p>
+                    <p class="prix"><?= $page_book[$i][5]; ?>.99$</p>
               </li>
           <?php } ?>
 	    </ul>

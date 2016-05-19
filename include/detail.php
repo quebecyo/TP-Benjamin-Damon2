@@ -66,7 +66,7 @@ require('views/aside.php');
     <li>
      <p class="nom"><?= $page_book[$i][1]; ?></p>
      <img src="../<?= $page_book[$i][6]; ?>" alt=""/>
-     <p class="prix">Prix : <?= $page_book[$i][5]; ?>$</p>
+     <p class="prix">Prix : <?= $page_book[$i][5]; ?>.99$</p>
      <p class="prix">Categorie : <?= $page_book[$i][2]; ?></p>
      <p class="prix">Publie le :<?= $page_book[$i][3]; ?></p>
      <p class="prix">Auteur : <?= $page_book[$i][4]; ?></p>
